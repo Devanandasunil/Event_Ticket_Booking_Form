@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🎫 Event Ticket Booking Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-image: url('images/background.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.7);
+      width: 70%;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    fieldset {
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    legend {
+      font-weight: bold;
+      font-size: 1.1em;
+      padding: 0 10px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    input[type="url"],
+    input[type="search"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: none;
+      box-sizing: border-box;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .submit-reset {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .submit-reset input {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .submit-reset input[type="submit"] {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .submit-reset input[type="reset"] {
+      background-color: #dc3545;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>🎫 Event Ticket Booking Form</h2>
+
+    <!-- HTML5 Form Start -->
+    <form action="/serverlogic" method="post" enctype="multipart/form-data">
+
+      <!-- Personal Info -->
+      <fieldset>
+        <legend>Personal Information</legend>
+
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Your full name" required maxlength="50" autofocus>
+
+        <label for="password">Create Password:</label>
+        <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" placeholder="10-digit number" pattern="[0-9]{10}" required>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="18" max="60" required>
+      </fieldset>
+
+      <!-- Event Details -->
+      <fieldset>
+        <legend>Event Preferences</legend>
+
+        <label for="event">Choose Your Event:</label>
+        <select id="event" name="event" required>
+          <option value="">-- Select an Event --</option>
+          <option value="concert1">Concert 1 - 7 PM</option>
+          <option value="concert2">Concert 2 - 9 PM</option>
+          <option value="concert3">Concert 3 - 6 PM</option>
+          <option value="standup">Stand-up Comedy - 5 PM</option>
+          <option value="expo">Tech Expo - 10 AM</option>
+        </select>
+
+        <label>Ticket Type:</label>
+        <input type="radio" id="vip" name="ticket" value="VIP" required>
+        <label for="vip">VIP - ₹1000</label>
+
+        <input type="radio" id="regular" name="ticket" value="Regular">
+        <label for="regular">Regular - ₹500</label>
+
+        <label>Extra Add-ons:</label>
+        <input type="checkbox" id="parking" name="addon_parking" value="yes">
+        <label for="parking">Parking ₹50</label>
+
+        <input type="checkbox" id="meal" name="addon_meal" value="yes">
+        <label for="meal">Meal ₹100</label>
+
+        <input type="checkbox" id="vipseating" name="addon_vipseating" value="yes">
+        <label for="vipseating">VIP Seating ₹200</label>
+
+        <input type="checkbox" id="backstage" name="addon_backstage" value="yes">
+        <label for="backstage">Backstage Access ₹300</label>
+
+        <label for="paymentproof">Upload Payment Proof:</label>
+        <!-- HTML comment: Upload payment screenshot here -->
+        <input type="file" id="paymentproof" name="paymentproof" required>
+
+        <label for="eventlink">Event Website:</label>
+        <input type="url" id="eventlink" name="eventlink" placeholder="https://eventsite.com" required>
+
+        <label for="eventsearch">Search for City:</label>
+        <input type="search" id="eventsearch" name="eventsearch" placeholder="Enter city to search" required>
+      </fieldset>
+
+      <!-- Feedback -->
+      <fieldset>
+        <legend>Feedback / Comments</legend>
+        <label for="comments">Any Comments or Notes:</label>
+        <textarea id="comments" name="comments" placeholder="Write here..." rows="4" required></textarea>
+      </fieldset>
+
+      <!-- Booking Progress and Submit -->
+      <fieldset>
+        <legend>Booking Progress</legend>
+
+        <label for="progress">Completion Status:</label>
+        <progress id="progress" value="80" max="100"></progress>
+
+        <div class="submit-reset">
+          <input type="submit" value="Submit">
+          <input type="reset" value="Reset">
+        </div>
+      </fieldset>
+
+    </form>
+    <!-- HTML5 Form End -->
+  </div>
+
+</body>
+</html>
